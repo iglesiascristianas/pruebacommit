@@ -1,0 +1,49 @@
+<?php
+/**
+ * @var \Phalcon\Mvc\View\Engine\Php $this
+ */
+?>
+
+<div class="page-header">
+    <h1>
+        Buscar Posts
+    </h1>
+    <p>
+        <?php echo $this->tag->linkTo(["posts/new", "Crear Nuevo Posts"]) ?>
+    </p>
+</div>
+
+<?php echo $this->getContent() ?>
+
+<?php
+    echo $this->tag->form(
+        [
+            "posts/search",
+            "autocomplete" => "off",
+            "class" => "form-horizontal"
+        ]
+    );
+?>
+
+
+<div class="form-group">
+    <label for="fieldTitle" class="col-sm-2 control-label">Title</label>
+    <div class="col-sm-10">
+        <?php echo $this->tag->textField(["title", "size" => 30, "class" => "form-control", "id" => "fieldTitle"]) ?>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="fieldContent" class="col-sm-2 control-label">Content</label>
+    <div class="col-sm-10">
+        <?php echo $this->tag->textArea(["content", "cols" => 30, "rows" => 4, "class" => "form-control", "id" => "fieldContent"]) ?>
+    </div>
+</div>
+
+<div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+        <?php echo $this->tag->submitButton(["Buscar", "class" => "btn btn-primary"]) ?>
+    </div>
+</div>
+
+<?php echo $this->tag->endForm(); ?>
